@@ -16,16 +16,16 @@ public:
 	Contact( void );
 	~Contact( void );
 
-	std::string get_first(void) const;
-	std::string get_last(void) const;
-	std::string get_nick(void) const;
-	std::string	get_phone(void) const;
-	std::string	get_secret(void) const;
-	void 		set_first(std::string str);
-	void  		set_last(std::string str);
-	void  		set_nick(std::string str);
-	void 		set_phone(std::string str);
-	void 		set_secret(std::string str); 		
+	std::string getFirst(void) const;
+	std::string getLast(void) const;
+	std::string getNick(void) const;
+	std::string	getPhone(void) const;
+	std::string	getSecret(void) const;
+	void 		setFirst(std::string str);
+	void  		setLast(std::string str);
+	void  		setNick(std::string str);
+	void 		setPhone(std::string str);
+	void 		setSecret(std::string str); 		
 
 };
 

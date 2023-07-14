@@ -11,52 +11,52 @@ Contact::~Contact()
 
 }
 
-std::string Contact::get_first(void) const
+std::string Contact::getFirst(void) const
 {
 	return (this->_first);
 }
 
-std::string Contact::get_last(void) const
+std::string Contact::getLast(void) const
 {
 	return (this->_last);
 }
 
-std::string Contact::get_nick(void) const
+std::string Contact::getNick(void) const
 {
 	return (this->_nick);
 }
 
-std::string Contact::get_phone(void) const
+std::string Contact::getPhone(void) const
 {
 	return (this->_phone);
 }
 
-std::string	Contact::get_secret(void) const
+std::string	Contact::getSecret(void) const
 {
 	return (this->_secret);
 }
 
-void		Contact::set_first(std::string str)
+void		Contact::setFirst(std::string str)
 {
 	this->_first = str;
 }
 
-void		Contact::set_last(std::string str)
+void		Contact::setLast(std::string str)
 {
 	this->_last = str;
 }
 
-void		Contact::set_nick(std::string str)
+void		Contact::setNick(std::string str)
 {
 	this->_nick = str;
 }
 
-void		Contact::set_phone(std::string str)
+void		Contact::setPhone(std::string str)
 {
 	this->_phone = str;
 }
 
-void		Contact::set_secret(std::string str)
+void		Contact::setSecret(std::string str)
 {
 	this->_secret = str;
 }

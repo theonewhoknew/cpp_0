@@ -16,7 +16,7 @@ public:
 	void add(void);
 	void search(void);
 	void print(void);
-	void print_contact(int slot);
+	void printContact(int slot);
 	
 
 };

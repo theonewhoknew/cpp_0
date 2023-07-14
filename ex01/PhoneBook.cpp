@@ -34,7 +34,7 @@ void PhoneBook::add(void)
 		std::getline(std::cin, str);
 		if (!str.empty())
 		{	
-			this->_contacts[this->_empty].set_first(str);
+			this->_contacts[this->_empty].setFirst(str);
 			field++;
 		}
 		else
@@ -46,7 +46,7 @@ void PhoneBook::add(void)
 		std::getline(std::cin, str);
 		if (!str.empty())
 		{	
-			this->_contacts[this->_empty].set_last(str);
+			this->_contacts[this->_empty].setLast(str);
 			field++;
 		}
 		else
@@ -58,7 +58,7 @@ void PhoneBook::add(void)
 		std::getline(std::cin, str);
 		if (!str.empty())
 		{	
-			this->_contacts[this->_empty].set_nick(str);
+			this->_contacts[this->_empty].setNick(str);
 			field++;
 		}
 		else
@@ -70,7 +70,7 @@ void PhoneBook::add(void)
 		std::getline(std::cin, str);
 		if (!str.empty())
 		{	
-			this->_contacts[this->_empty].set_phone(str);
+			this->_contacts[this->_empty].setPhone(str);
 			field++;
 		}
 		else
@@ -82,7 +82,7 @@ void PhoneBook::add(void)
 		std::getline(std::cin, str);
 		if (!str.empty())
 		{	
-			this->_contacts[this->_empty].set_secret(str);
+			this->_contacts[this->_empty].setSecret(str);
 			field++;
 		}
 		else
@@ -108,7 +108,7 @@ void PhoneBook::print(void)
 	{
 		while (i < this->_empty)
 		{
-			this->print_contact(i);
+			this->printContact(i);
 			i++;
 		}
 	}
@@ -116,7 +116,7 @@ void PhoneBook::print(void)
 	{
 		while (i < 8)
 		{
-			this->print_contact(i);
+			this->printContact(i);
 			i++;
 		}
 	}
@@ -132,41 +132,41 @@ void print_spaces(int number)
 	}
 }
 
-void PhoneBook::print_contact(int slot)
+void PhoneBook::printContact(int slot)
 {
 	std::cout << "|         " << slot + 1;
 	std::cout << "|";
-	if (this->_contacts[slot].get_first().length() > 10)
+	if (this->_contacts[slot].getFirst().length() > 10)
 	{
-		std::cout << this->_contacts[slot].get_first().substr(0, 9);
+		std::cout << this->_contacts[slot].getFirst().substr(0, 9);
 		std::cout << ".";
 	}
 	else
 	{
-		print_spaces(10 - this->_contacts[slot].get_first().length());
-		std::cout << this->_contacts[slot].get_first();
+		print_spaces(10 - this->_contacts[slot].getFirst().length());
+		std::cout << this->_contacts[slot].getFirst();
 	}
 	std::cout << "|";
-	if (this->_contacts[slot].get_last().length() > 10)
+	if (this->_contacts[slot].getLast().length() > 10)
 	{
-		std::cout << this->_contacts[slot].get_last().substr(0, 9);
+		std::cout << this->_contacts[slot].getLast().substr(0, 9);
 		std::cout << ".";
 	}
 	else
 	{
-		print_spaces(10 - this->_contacts[slot].get_last().length());
-		std::cout << this->_contacts[slot].get_last();
+		print_spaces(10 - this->_contacts[slot].getLast().length());
+		std::cout << this->_contacts[slot].getLast();
 	}
 	std::cout << "|";
-	if (this->_contacts[slot].get_nick().length() > 10)
+	if (this->_contacts[slot].getNick().length() > 10)
 	{
-		std::cout << this->_contacts[slot].get_nick().substr(0, 9);
+		std::cout << this->_contacts[slot].getNick().substr(0, 9);
 		std::cout << ".";
 	}
 	else
 	{
-		print_spaces(10 - this->_contacts[slot].get_nick().length());
-		std::cout << this->_contacts[slot].get_nick();
+		print_spaces(10 - this->_contacts[slot].getNick().length());
+		std::cout << this->_contacts[slot].getNick();
 	}
 	std::cout << "|" << std::endl;
 }
@@ -197,11 +197,11 @@ void PhoneBook::search(void)
 				std::cout << "This is an empty slot! " << std::endl;
 			else
 			{
-				std::cout << "First name : " << this->_contacts[slot - 1].get_first() << std::endl;
-				std::cout << "Last name : " << this->_contacts[slot - 1].get_last() << std::endl;
-				std::cout << "Nickname : " << this->_contacts[slot - 1].get_nick() << std::endl;
-				std::cout << "Phone Number : " << this->_contacts[slot - 1].get_phone() << std::endl;
-				std::cout << "Darkest SEcret : " << this->_contacts[slot - 1].get_secret() << std::endl;
+				std::cout << "First name : " << this->_contacts[slot - 1].getFirst() << std::endl;
+				std::cout << "Last name : " << this->_contacts[slot - 1].getLast() << std::endl;
+				std::cout << "Nickname : " << this->_contacts[slot - 1].getNick() << std::endl;
+				std::cout << "Phone Number : " << this->_contacts[slot - 1].getPhone() << std::endl;
+				std::cout << "Darkest SEcret : " << this->_contacts[slot - 1].getSecret() << std::endl;
 				done++;
 			} 
 		}
