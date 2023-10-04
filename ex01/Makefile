@@ -1,15 +1,31 @@
 NAME = phonebookapp
+SRC = $(addprefix $(DIR_SRC), main.cpp Contact.cpp PhoneBook.cpp)
+FLAGS = -std=c++98 -Wall -Wextra -Werror
+DEPFLAGS = -MMD -MP
+DIR_OBJ = tmp/
+DIR_SRC = src/
+OBJ = $(addprefix $(DIR_OBJ), $(notdir $(SRC:.cpp=.o)))
+DEP = $(OBJ:.o=.d)
 
-CLASS = PhoneBook.cpp Contact.cpp
+all: $(DIR_OBJ) $(NAME)
 
-SRC = main.cpp
+$(DIR_OBJ):
+	mkdir -p $@
 
-COMP = c++ -Wall -Werror -Wextra -std=c++98
+$(NAME): $(OBJ)
+	c++ $(FLAGS) $(OBJ) -o $(NAME)
 
-all: $(NAME)
+$(DIR_OBJ)%.o: $(DIR_SRC)%.cpp Makefile 
+	c++ $(FLAGS) $(DEPFLAGS) -c $< -o $@
 
-$(NAME) : $(CLASS) $(SRC)
-	$(COMP) $(CLASS) $(SRC) -o $(NAME)
+clean:
+	rm -fr $(DIR_OBJ)
 
-clean : 
+fclean: clean
 	rm -f $(NAME)
+
+re: fclean all
+
+.PHONY: all clean fclean re
+
+-include $(DEP)

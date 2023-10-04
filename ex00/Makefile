@@ -1,13 +1,31 @@
 NAME = megaphone
+SRC = $(addprefix $(DIR_SRC), megaphone.cpp)
+FLAGS = -std=c++98 -Wall -Wextra -Werror
+DEPFLAGS = -MMD -MP
+DIR_OBJ = tmp/
+DIR_SRC = src/
+OBJ = $(addprefix $(DIR_OBJ), $(notdir $(SRC:.cpp=.o)))
+DEP = $(OBJ:.o=.d)
 
-COMP = c++ -Wall -Werror -Wextra -std=c++98 -o
+all: $(DIR_OBJ) $(NAME)
 
-SRC = megaphone.cpp
+$(DIR_OBJ):
+	mkdir -p $@
 
-all : $(NAME)
+$(NAME): $(OBJ)
+	c++ $(FLAGS) $(OBJ) -o $(NAME)
 
-$(NAME) : $(SRC)
-	$(COMP) $(NAME) $(SRC)
+$(DIR_OBJ)%.o: $(DIR_SRC)%.cpp Makefile 
+	c++ $(FLAGS) $(DEPFLAGS) -c $< -o $@
 
-clean :
+clean:
+	rm -fr $(DIR_OBJ)
+
+fclean: clean
 	rm -f $(NAME)
+
+re: fclean all
+
+.PHONY: all clean fclean re
+
+-include $(DEP)

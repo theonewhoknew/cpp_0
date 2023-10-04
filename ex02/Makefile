@@ -1,13 +1,31 @@
 NAME = banklog
+SRC = $(addprefix $(DIR_SRC), tests.cpp Account.cpp)
+FLAGS = -std=c++98 -Wall -Wextra -Werror
+DEPFLAGS = -MMD -MP
+DIR_OBJ = tmp/
+DIR_SRC = src/
+OBJ = $(addprefix $(DIR_OBJ), $(notdir $(SRC:.cpp=.o)))
+DEP = $(OBJ:.o=.d)
 
-SRC = tests.cpp Account.cpp
+all: $(DIR_OBJ) $(NAME)
 
-COMP = c++ -Wall -Wextra -std=c++98
+$(DIR_OBJ):
+	mkdir -p $@
 
-all : $(NAME)
+$(NAME): $(OBJ)
+	c++ $(FLAGS) $(OBJ) -o $(NAME)
 
-$(NAME) : $(SRC)
-	$(COMP) $(SRC) -o $(NAME)
+$(DIR_OBJ)%.o: $(DIR_SRC)%.cpp Makefile 
+	c++ $(FLAGS) $(DEPFLAGS) -c $< -o $@
 
-clean :
+clean:
+	rm -fr $(DIR_OBJ)
+
+fclean: clean
 	rm -f $(NAME)
+
+re: fclean all
+
+.PHONY: all clean fclean re
+
+-include $(DEP)

@@ -17,8 +17,6 @@ public:
 	void search(void);
 	void print(void);
 	void printContact(int slot);
-	
-
 };
 
 int is_digits(std::string& str);

@@ -2,7 +2,7 @@
 #include <string>
 #include <cctype>
 #include <cstdlib>
-#include "PhoneBook.hpp"
+#include "../inc/PhoneBook.hpp"
 
 PhoneBook::PhoneBook()
 {

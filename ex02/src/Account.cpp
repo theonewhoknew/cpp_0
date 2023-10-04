@@ -1,7 +1,7 @@
 #include <iostream>
 #include <iomanip>
 #include <ctime>
-#include "Account.hpp"
+#include "../inc/Account.hpp"
 
 int Account::_totalAmount;
 int Account::_nbAccounts;
