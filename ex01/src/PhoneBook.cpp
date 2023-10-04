@@ -16,6 +16,22 @@ PhoneBook::~PhoneBook()
 	std::cout << "Thank you for using this Phonebook. Bye!" << std::endl;
 }
 
+static	int all_digits(std::string str)
+{	
+	int	i;
+
+	i = 0;
+	while (str[i]) 
+	{
+    	if (!(str[i] >= 48 && str[i] <= 57)) 
+		{
+        	return (0);
+    	}
+		i++;
+    }
+	return (1);	
+}
+
 void PhoneBook::add(void)
 {
 	std::string str;
@@ -68,13 +84,15 @@ void PhoneBook::add(void)
 	{
 		std::cout << "Enter phone number: ";
 		std::getline(std::cin, str);
-		if (!str.empty())
+		if (!str.empty() && all_digits(str))
 		{	
 			this->_contacts[this->_empty].setPhone(str);
 			field++;
 		}
-		else
+		else if (str.empty())
 			std::cout << "Field cannot be empty! " << std::endl; 
+		else
+			std::cout << "Only numbers are allowed in the phone number! " << std::endl;
 	}
 	while (field == 4)
 	{
