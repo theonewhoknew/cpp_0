@@ -23,7 +23,7 @@ int main(void)
 		else if (str.compare("SEARCH") == 0)
 			phonebook.search();
 		else
-			std::cout << "Error. Enter ADD, SEARCH or EXIT" << std::endl;
+			std::cout << "Wrong command!" << std::endl;
 		
 	} 
 }
